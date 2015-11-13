@@ -1,0 +1,9 @@
+__pycache__/
+**/*.pyc
+data/
+.idea/
+bin/
+lib/
+lib64
+pip-selfcheck.json
+include/
