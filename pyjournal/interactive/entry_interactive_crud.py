@@ -2,6 +2,7 @@ import os
 import ql.dateparser
 from ql.parser import ParseValidationError
 from utils import interactiveutils
+from interactive import file_interactive_crud
 
 from datetime import datetime
 
@@ -142,5 +143,5 @@ def get_categories():
 
 def get_file_entries():
     files = file_collection.get_all_files()
-    file = interactiveutils.print_and_select_files(files)
+    file = file_interactive_crud.print_and_select_files(files)
     read({'file_id': file['_id']})

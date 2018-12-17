@@ -33,4 +33,15 @@ def get_file_entries_qty(file_id):
     query = {'file_id': file_id}
     return entry_collection.find_with_projection(query, ['_id']).count()
 
+def print_and_select_files(files_cursor):
+    print("\nSelect the file where the entry will belong")
+    print("----------------------------------------------")
+    all_files = files_cursor
+    _range = range(all_files.count())
+    for index in _range:
+        file = all_files[index]
+        print("{}: {} ".format(index, file['file_name']))
+    print("")
+    file_num = interactiveutils.integer_input(_range, "Invalid input", "num > ")
+    return all_files[file_num]
 

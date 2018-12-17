@@ -76,14 +76,3 @@ def save_in_file(location, content):
     save_file.close()
 
 
-def print_and_select_files(files_cursor):
-    print("\nSelect the file where the entry will belong")
-    print("----------------------------------------------")
-    all_files = files_cursor
-    _range = range(all_files.count())
-    for index in _range:
-        file = all_files[index]
-        print("{}: {} ".format(index, file['file_name']))
-    print("")
-    file_num = integer_input(_range, "Invalid input", "num > ")
-    return all_files[file_num]
