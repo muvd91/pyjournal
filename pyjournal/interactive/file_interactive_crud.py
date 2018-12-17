@@ -17,6 +17,14 @@ def insert():
     print("New file:\n{} ({})".format(file_name, new_file['_id']))
 
 
+def delete_file():
+    all_files = file_collection.get_all_files()
+    selected_file = print_and_select_files(all_files)
+    file_collection.delete(selected_file['_id'])
+    print("Deleted file:\n{} ({})"
+            .format(selected_file['file_name'], selected_file['_id']))
+
+
 def get_files():
     print("\nFiles:\n-------")
     files = file_collection.get_all_files()

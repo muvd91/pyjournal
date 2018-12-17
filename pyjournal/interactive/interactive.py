@@ -31,6 +31,8 @@ def exec_query(query):
             entry_interactive_crud.get_file_entries()
         elif command == 'new file':
             file_interactive_crud.insert()
+        elif command == 'delete file':
+            file_interactive_crud.delete_file()
         elif command == 'files':
             file_interactive_crud.get_files()
         elif command == 'categories':
