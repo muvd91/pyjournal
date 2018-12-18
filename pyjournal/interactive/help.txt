@@ -1,0 +1,59 @@
+Python Journal  A simple DB based journal.
+
+This is the interactive command-line program of the journal.
+
+An Entry is the main unit of the program. It contains the content
+that the user wishes to store. It also contains a 'timestamp',
+'tags' and 'category' of the content.
+
+A File is a collection of Entries. Each File has a 'file name'.
+
+The first way of classifying Entries is given by the 'category' of
+the entry.
+If further classification of Entries is needed, Files should be used.
+
+Command list
+
+get ( [all|entries] | <category>)
+  Fetch all Entries if 'all' or 'entries' are given as parameter.
+  Fetch all Entries that belong to <category>
+  E.g.
+    get diary -- Fetchs all Entries on the 'diary' category.
+
+delete <id>
+  Deletes the Entry with <id>.
+
+write
+  Starts an interactive sequence to add a new Entry. This sequence
+  consists of opening an editor to write the content of the file,
+  then, the user will be asked to input a category and a date for
+  the entry.
+
+edit <id>
+  Starts an interactive sequence similar to the 'write' command but
+  instead of creating a new entry, it will modify the one specified
+  by the <id>.
+
+write on file
+  Starts the 'write' sequence with the option of associating the Entry
+  to an existing File.
+
+use 'pager'|'terminal'
+  Defines the output when displaying Entries.
+  If 'terminal' (default), the outputs prints on stdout.
+  If 'pager', the display opens a pager that the user can navigate
+  (recommended).
+
+open file
+  Displays a menu to select an existing file. Once selected, retrieves
+  all Entries that belong to the selected File.
+
+new file
+  Interactively creates a new file.
+
+files
+  Display all existing files.
+
+categories
+  Display all existing categories.
+

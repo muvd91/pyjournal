@@ -1,6 +1,7 @@
 from interactive import entry_interactive_crud
 from interactive import file_interactive_crud
 from ql import parser
+import os
 
 
 def exec_query(query):
@@ -34,6 +35,10 @@ def exec_query(query):
             file_interactive_crud.get_files()
         elif command == 'categories':
             print(entry_interactive_crud.get_categories())
+        elif command == 'help':
+            dir_path = os.path.dirname(os.path.realpath(__file__))
+            with open(dir_path + '/help.txt','r') as f:
+                print(f.read())
     except KeyboardInterrupt:
         return
 
