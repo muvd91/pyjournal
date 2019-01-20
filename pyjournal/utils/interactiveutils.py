@@ -20,9 +20,8 @@ def open_document_editor(pre_content=None):
     temp_file.flush()
     subprocess.call([editor, temp_file.name])
     temp_file.seek(0)
-    file_content = map(lambda e: ''.join(e), temp_file)
-    def no_comments(e): return not e[0] == '#'
-    file_content = filter(no_comments, file_content)
+    no_comments = lambda e: not e[0] == '#'
+    file_content = filter(no_comments,temp_file)
     content = ''.join(file_content)
     return content
 
