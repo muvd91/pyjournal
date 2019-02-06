@@ -77,14 +77,6 @@ class JournalView:
     def __init__(self, entry_list):
         self.entry_list = entry_list
 
-    def print_contents(self, display, use):
-        if use == 'pager':
-            self.print_with_pager()
-        elif display == 'plain':
-            self.print_plain()
-        else:
-            self.print_all_days()
-
     def print_all_days(self):
         day = Day()
         for entry in self.entry_list:

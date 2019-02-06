@@ -1,4 +1,4 @@
-commands = ['get', 'write', 'edit', 'delete', 'display', 'use', 'categories']
+commands = ['get', 'write', 'edit', 'delete', 'categories']
 no_arg_cmds = ['write', 'categories', 'write on file',
                'files', 'delete file', 'rename file',
                'new file', 'open file', 'help']
@@ -36,12 +36,6 @@ def validator(previous, token, template):
 
     elif previous == 'delete':
         template['_id'] = token
-
-    elif previous == 'display':
-        template['display'] = token
-
-    elif previous == 'use':
-        template['use'] = token
 
     return template
 

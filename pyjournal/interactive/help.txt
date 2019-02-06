@@ -38,12 +38,6 @@ write on file
   Starts the 'write' sequence with the option of associating the Entry
   to an existing File.
 
-use 'pager'|'terminal'
-  Defines the output when displaying Entries.
-  If 'terminal' (default), the outputs prints on stdout.
-  If 'pager', the display opens a pager that the user can navigate
-  (recommended).
-
 open file
   Displays a menu to select an existing file. Once selected, retrieves
   all Entries that belong to the selected File.

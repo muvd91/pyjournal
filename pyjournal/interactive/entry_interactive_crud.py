@@ -17,9 +17,6 @@ from view.journalView import JournalView
 # Globals
 DATA_DIR = os.path.expandvars('${HOME}/pyjournal/data/journal.json')
 
-display_setting = 'byday'
-use_setting = 'terminal'
-
 entry_collection = None
 
 try:
@@ -119,7 +116,7 @@ def read(query):
         print("No entries found")
         return
     view = JournalView(entries)
-    view.print_contents(display_setting, use_setting)
+    view.print_with_pager()
 
 
 def delete(query):

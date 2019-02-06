@@ -23,10 +23,6 @@ def exec_query(query):
             entry_interactive_crud.insert_or_update(query)
         elif command == 'write on file':
             entry_interactive_crud.insert_or_update(is_file_entry=True)
-        elif command == 'display':
-            entry_interactive_crud.display_setting = query['display']
-        elif command == 'use':
-            entry_interactive_crud.use_setting = query['use']
         elif command == 'open file':
             entry_interactive_crud.get_file_entries()
         elif command == 'new file':
