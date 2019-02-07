@@ -10,7 +10,8 @@ yes_no_responses.extend(no_responses)
 
 
 def open_document_editor(pre_content=None):
-    temp_file = tempfile.NamedTemporaryFile(mode='r+', suffix=".tmp", encoding="utf-8")
+    temp_file = tempfile.NamedTemporaryFile(
+        mode='r+', suffix=".tmp", encoding="utf-8")
     editor = os.environ.get("EDITOR", "vimx")
     temp_file.write('#Type your log!. Save and quit when finished.\n'
                     '#Lines starting with # will not be saved on your log!\n')
@@ -20,7 +21,7 @@ def open_document_editor(pre_content=None):
     subprocess.call([editor, temp_file.name])
     temp_file.seek(0)
     file_content = map(lambda e: ''.join(e), temp_file)
-    no_comments = lambda e: not e[0] == '#'
+    def no_comments(e): return not e[0] == '#'
     file_content = filter(no_comments, file_content)
     content = ''.join(file_content)
     return content
@@ -29,7 +30,8 @@ def open_document_editor(pre_content=None):
 def format_tag(str_input):
     lst = str_input.split(',')
     ls = list(map(lambda e: e.lstrip().rstrip(), lst))
-    no_whitespace = lambda e: not(e == '\n' or e == '\t' or e == '' or ' ' in e or '\t' in e)
+    def no_whitespace(e): return not(e == '\n' or e ==
+                                     '\t' or e == '' or ' ' in e or '\t' in e)
     return list(filter(no_whitespace, ls))
 
 
@@ -42,7 +44,7 @@ def restricted_input(allowed_response=[], msg='', caret='> '):
 
 
 def integer_input(_range=None, msg='', caret='> '):
-    while 1:
+    while True:
         try:
             response = int(input(caret))
             if _range is not None:
@@ -74,5 +76,3 @@ def save_in_file(location, content):
     save_file.write(content)
     save_file.write("\n")
     save_file.close()
-
-

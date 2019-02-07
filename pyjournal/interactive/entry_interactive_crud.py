@@ -48,14 +48,16 @@ def insert_or_update(query=None, is_file_entry=False):
         entry_obj.set_file_id(file_id)
     else:
         entry_obj = entry_collection.find_one(query)
-        entry_content = interactiveutils.open_document_editor(entry_obj.content)
+        entry_content = interactiveutils.open_document_editor(
+            entry_obj.content)
 
     entry_obj.set_content(entry_content)
 
     # Set Category
-    while 1:
+    while True:
         print("Enter the category of this entry")
-        category_input = interactiveutils.not_empty_input("Category cannot be empty", "category > ")
+        category_input = interactiveutils.not_empty_input(
+            "Category cannot be empty", "category > ")
         categories = get_categories()
         if category_input not in categories:
             print("This is a new category, do you want to continue?")
@@ -74,7 +76,7 @@ def insert_or_update(query=None, is_file_entry=False):
     entry_obj.set_tag(tag_input)
 
     # Set Timestamp
-    while 1:
+    while True:
         if query is None:
             default_date = datetime.now()
         else:
@@ -90,7 +92,8 @@ def insert_or_update(query=None, is_file_entry=False):
                 continue
         else:
             input_date = default_date
-        print("Entry will be saved with datetime {}".format(input_date.strftime('%c')))
+        print("Entry will be saved with datetime {}".format(
+            input_date.strftime('%c')))
         print("Is this correct?")
         confirm = interactiveutils.yes_no_input("Type yes or no.", "y/N > ")
         if confirm:

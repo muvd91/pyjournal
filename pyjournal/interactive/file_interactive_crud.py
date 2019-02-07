@@ -12,7 +12,8 @@ except ConnectionFailure:
 
 def insert():
     print("Enter the name of the new file")
-    file_name = interactiveutils.not_empty_input("Name cannot be empty", "file > ")
+    file_name = interactiveutils.not_empty_input(
+        "Name cannot be empty", "file > ")
     new_file = file_collection.insert({'file_name': file_name})
     print("New file:\n{} ({})".format(file_name, new_file['_id']))
 
@@ -22,7 +23,7 @@ def delete_file():
     selected_file = print_and_select_files(all_files)
     file_collection.delete(selected_file['_id'])
     print("Deleted file:\n{} ({})"
-            .format(selected_file['file_name'], selected_file['_id']))
+          .format(selected_file['file_name'], selected_file['_id']))
 
 
 def get_files():
@@ -41,6 +42,7 @@ def get_file_entries_qty(file_id):
     query = {'file_id': file_id}
     return entry_collection.find_with_projection(query, ['_id']).count()
 
+
 def print_and_select_files(files_cursor):
     print("\nSelect the file where the entry will belong")
     print("----------------------------------------------")
@@ -50,6 +52,6 @@ def print_and_select_files(files_cursor):
         file = all_files[index]
         print("{}: {} ".format(index, file['file_name']))
     print("")
-    file_num = interactiveutils.integer_input(_range, "Invalid input", "num > ")
+    file_num = interactiveutils.integer_input(
+        _range, "Invalid input", "num > ")
     return all_files[file_num]
-

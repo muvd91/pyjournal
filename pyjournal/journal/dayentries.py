@@ -35,9 +35,8 @@ class Day:
     def belongs_to_this_day(self, entry):
         if self.date is None:
             return False
-        return entry.get_date_from_ts() == (self.date.day, self.date.month, self.date.year)
+        return entry.get_date_from_ts() == (
+            self.date.day, self.date.month, self.date.year)
 
     def num_entries(self):
         return len(self.entryList)
-
-

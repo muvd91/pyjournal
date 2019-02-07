@@ -2,8 +2,8 @@ import unittest
 from pyjournal.utils import jsonTools
 
 foo_json = '{"str_attr": "string", ' \
-                        '"list_attr": ["elemOne", "elemTwo"], ' \
-                        '"dict_attr": {"pi": 3.1415, "phi": 16180, "e": 2.7182}}'
+    '"list_attr": ["elemOne", "elemTwo"], ' \
+    '"dict_attr": {"pi": 3.1415, "phi": 16180, "e": 2.7182}}'
 
 
 class TestJsonUtils(unittest.TestCase):
@@ -27,6 +27,7 @@ class Foo:
         self.str_attr = 'string'
         self.list_attr = ['elemOne', 'elemTwo']
         self.dict_attr = {'pi': 3.1415, 'phi': 16180, 'e': 2.7182}
+
 
 if __name__ == '__main__':
     unittest.main()

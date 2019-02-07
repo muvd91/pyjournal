@@ -9,7 +9,8 @@ MONTHS = ["n/a", "January", "February", "March", "April",
           "May", "June", "July", "August",
           "September", "October", "November", "December"]
 
-DAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+DAYS = ["Monday", "Tuesday", "Wednesday",
+        "Thursday", "Friday", "Saturday", "Sunday"]
 
 date_format = """{0} {1} {2}, {3}"""
 
@@ -123,7 +124,7 @@ class JournalView:
         entry_changed = True
         num_lines = 0
 
-        while 1:
+        while True:
             if entry_changed:
                 entry_pad.clear()
                 entry_pad.refresh(0, 0, 0, 0, t_rows, t_cols)
@@ -151,11 +152,11 @@ class JournalView:
                 entry_changed = False
 
             key = entry_pad.getkey()
-            if key == 'l' and i+1 in range(len(entry_list)):
-                i = i+1
+            if key == 'l' and i + 1 in range(len(entry_list)):
+                i = i + 1
                 entry_changed = True
-            elif key == 'h' and i-1 in range(len(entry_list)):
-                i = i - 1 if i-1 >= 0 else i
+            elif key == 'h' and i - 1 in range(len(entry_list)):
+                i = i - 1 if i - 1 >= 0 else i
                 entry_changed = True
             elif key == 'L':
                 i = len(entry_list) - 1
@@ -163,19 +164,21 @@ class JournalView:
             elif key == 'H':
                 i = 0
                 entry_changed = True
-            elif key == 'j' and num_lines > (t_rows - 1) and (t_rows - 1)+entry_list_delimiter+1 <= num_lines:
+            elif key == 'j' and num_lines > (t_rows - 1) and (t_rows - 1) + entry_list_delimiter + 1 <= num_lines:
                 entry_list_delimiter += 1
                 entry_pad.clear()
                 entry_pad.refresh(0, 0, 0, 0, t_rows, t_cols)
-                for j in range(entry_list_delimiter, (t_rows - 1)+entry_list_delimiter):
+                for j in range(entry_list_delimiter,
+                               (t_rows - 1) + entry_list_delimiter):
                     entry_pad.addstr(entry_lines[j])
                 entry_pad.refresh(0, 0, 0, 0, t_rows, t_cols)
                 continue
-            elif key == 'k' and num_lines > (t_rows - 1) and entry_list_delimiter-1 >= 0:
+            elif key == 'k' and num_lines > (t_rows - 1) and entry_list_delimiter - 1 >= 0:
                 entry_list_delimiter -= 1
                 entry_pad.clear()
                 entry_pad.refresh(0, 0, 0, 0, t_rows, t_cols)
-                for j in range(entry_list_delimiter, (t_rows - 1)+entry_list_delimiter):
+                for j in range(entry_list_delimiter,
+                               (t_rows - 1) + entry_list_delimiter):
                     entry_pad.addstr(entry_lines[j])
                 entry_pad.refresh(0, 0, 0, 0, t_rows, t_cols)
                 continue
@@ -183,13 +186,14 @@ class JournalView:
                 msg = "Are you sure you want to delete this entry? [Y/n]"
                 entry_pad.addstr(0, 0, msg)
                 entry_pad.refresh(0, 0, 0, 0, t_rows, t_cols)
-                while 1:
+                while True:
                     confirm = entry_pad.getkey()
                     if confirm == 'Y':
                         _entry_collection = entry_collection.EntryCollection()
-                        _entry_collection.delete_one({'_id': ObjectId(current_entry._id)})
+                        _entry_collection.delete_one(
+                            {'_id': ObjectId(current_entry._id)})
                         entry_list.pop(i)
-                        i = len(entry_list)-1 if i == len(entry_list) else i
+                        i = len(entry_list) - 1 if i == len(entry_list) else i
                         entry_changed = True
                         break
                     elif confirm == 'n' or 'N':

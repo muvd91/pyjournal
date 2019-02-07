@@ -39,7 +39,7 @@ def exec_query(query):
             print(entry_interactive_crud.get_categories())
         elif command == 'help':
             dir_path = os.path.dirname(os.path.realpath(__file__))
-            with open(dir_path + '/help.txt','r') as f:
+            with open(dir_path + '/help.txt', 'r') as f:
                 print(f.read())
     except KeyboardInterrupt:
         return
@@ -58,4 +58,3 @@ def interactive():
             exec_query(std_in)
         std_in = input("> ")
     print("Bye!")
-

@@ -43,7 +43,8 @@ class EntryCollection:
         return entry
 
     def find(self, dict_query):
-        logs = self.collection.find(dict_query).sort([("timestamp", pymongo.ASCENDING)])
+        logs = self.collection.find(dict_query).sort(
+            [("timestamp", pymongo.ASCENDING)])
         response = list()
         for l in logs:
             response.append(Entry(l))
@@ -65,7 +66,8 @@ class EntryCollection:
     def update_one(self, dict_query, updated_entry):
         del updated_entry._id
         updated_entry = updated_entry.__dict__
-        return self.collection.replace_one(dict_query, updated_entry).modified_count
+        return self.collection.replace_one(
+            dict_query, updated_entry).modified_count
 
     def find_with_projection(self, query, projection):
         return self.collection.find(query, projection)

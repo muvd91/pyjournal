@@ -21,8 +21,8 @@ class FileCollection:
 
     def edit(self, file_id, new_file):
         del new_file._id
-        return self.collection.replace_one({'_id': file_id}, new_file).modified_count
+        return self.collection.replace_one(
+            {'_id': file_id}, new_file).modified_count
 
     def delete(self, file_id):
         return self.collection.delete_one({'_id': file_id}).deleted_count
-

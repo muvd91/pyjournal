@@ -1,7 +1,7 @@
 commands = ['get', 'write', 'edit', 'delete', 'display', 'use', 'categories']
 no_arg_cmds = ['write', 'categories', 'write on file',
                'files', 'delete file', 'rename file',
-               'new file', 'open file','help']
+               'new file', 'open file', 'help']
 
 
 def get_query_template(query):

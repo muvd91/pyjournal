@@ -43,4 +43,5 @@ def close_connection():
     print("Closing MongoClient")
     client.close()
 
+
 connect_to_db()
