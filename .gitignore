@@ -7,3 +7,4 @@ lib/
 lib64
 pip-selfcheck.json
 include/
+venv/
