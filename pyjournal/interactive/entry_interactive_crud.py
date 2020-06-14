@@ -42,7 +42,6 @@ def insert_or_update(query=None, is_file_entry=False):
     if query is None:
         entry_obj = Entry()
         entry_content = interactiveutils.open_document_editor()
-        entry_obj.set_file_id(file_id)
     else:
         entry_obj = entry_collection.find_one(query)
         entry_content = interactiveutils.open_document_editor(

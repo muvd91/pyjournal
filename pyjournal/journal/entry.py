@@ -9,13 +9,11 @@ class Entry:
             self.timestamp = 0
             self.tags = list()
             self.category = ""
-            self.file_id = None
             return
         self.content = log['content']
         self.timestamp = log['timestamp']
         self.tags = log['tags']
         self.category = log['category']
-        self.file_id = log['file_id']
         self._id = str(log['_id'])
 
     def set_content(self, content):
@@ -29,9 +27,6 @@ class Entry:
 
     def set_timestamp(self, ts=time.time()):
         self.timestamp = ts
-
-    def set_file_id(self, file_id):
-        self.file_id = str(file_id) if file_id is not None else None
 
     def get_date_from_ts(self):
         date = datetime.datetime.fromtimestamp(self.timestamp)

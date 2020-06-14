@@ -23,7 +23,7 @@ def open_document_editor(pre_content=None):
     no_comments = lambda e: not e[0] == '#'
     file_content = filter(no_comments,temp_file)
     content = ''.join(file_content)
-    return content
+    return content.lstrip().rstrip()
 
 
 def format_tag(str_input):

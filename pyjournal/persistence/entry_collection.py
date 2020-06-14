@@ -36,8 +36,6 @@ class EntryCollection:
 
     def insert(self, entry):
         entry_dict = entry.__dict__
-        if entry_dict['file_id'] is not None:
-            entry_dict['file_id'] = ObjectId(entry_dict['file_id'])
         self.collection.insert_one(entry_dict)
         entry_dict['_id'] = str(entry_dict['_id'])
         return entry
