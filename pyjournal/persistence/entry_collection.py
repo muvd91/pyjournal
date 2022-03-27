@@ -13,7 +13,7 @@ class EntryCollection:
         self.collection = persistence.db.get_collection('entries')
 
     def count(self):
-        return self.collection.count()
+        return self.collection.count_documents({})
 
     def get_single_date_logs(self, day=-1, month=-1, year=-1):
         if year == -1:

@@ -93,7 +93,7 @@ class JournalView:
             print(entry_view)
 
     def print_with_pager(self):
-        curses.wrapper(func=self.curses_pager)
+        curses.wrapper(self.curses_pager)
 
     def curses_pager(self, win):
         i = 0
