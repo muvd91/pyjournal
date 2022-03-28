@@ -1,0 +1,13 @@
+version: "3.9"
+services:
+  pyjournal:
+    build: .
+    depends_on: "db"
+    stdin_open: true
+    tty: true
+  db:
+    image: mongo
+    logging:
+      driver: none
+    ports:
+      - "27017:27017"
