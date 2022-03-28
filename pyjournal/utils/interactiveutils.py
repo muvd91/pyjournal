@@ -12,7 +12,7 @@ yes_no_responses.extend(no_responses)
 def open_document_editor(pre_content=None):
     temp_file = tempfile.NamedTemporaryFile(
         mode='r+', suffix=".tmp", encoding="utf-8")
-    editor = os.environ.get("EDITOR", "vimx")
+    editor = os.environ.get("EDITOR", "vim")
     temp_file.write('#Type your log!. Save and quit when finished.\n'
                     '#Lines starting with # will not be saved on your log!\n')
     if pre_content is not None:
