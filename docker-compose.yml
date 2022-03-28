@@ -7,7 +7,7 @@ services:
     tty: true
   db:
     image: mongo
-    logging:
-      driver: none
     ports:
       - "27017:27017"
+    volumes:
+      - ${PYJOURNAL_BACKUP}:/pyjournal_backup
